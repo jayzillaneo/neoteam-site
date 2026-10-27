@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Download NEO</title>
+  <meta name="description" content="Download the latest NEO Mac and Windows builds with a verified company Google account." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B1F33'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='14' fill='%23F4F7FB'%3EN%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --ink: #0b1f33; --muted: #5a6b7d; --line: #d9e2ec; --bg: #f4f7fb;
+      --card: #ffffff; --accent: #1f6feb; --accent-soft: #e8f0fe;
+      --warn: #9a3412; --warn-bg: #fff7ed; --warn-line: #fed7aa;
+      --ok: #065f46; --ok-bg: #ecfdf5; --ok-line: #a7f3d0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: var(--ink); background: linear-gradient(180deg, #eef3f9 0%, var(--bg) 45%, #fff 100%);
+      min-height: 100vh; line-height: 1.55;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 40px 24px 72px; }
+    header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.08em; color: inherit; text-decoration: none; }
+    .mark {
+      width: 38px; height: 38px; border-radius: 10px; background: var(--ink); color: #fff;
+      display: grid; place-items: center; font-size: 0.85rem;
+    }
+    nav a { color: var(--muted); margin-left: 16px; }
+    .panel {
+      background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+      padding: 32px 28px; box-shadow: 0 14px 32px rgba(11, 31, 51, 0.05);
+    }
+    h1 { margin: 0 0 8px; font-size: clamp(1.7rem, 3.5vw, 2.1rem); letter-spacing: -0.02em; }
+    .lede { margin: 0 0 22px; color: var(--muted); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border-radius: 12px; padding: 12px 16px; font-weight: 700; border: 1px solid transparent;
+      cursor: pointer; text-decoration: none; font-size: 0.96rem;
+    }
+    .btn-primary { background: var(--ink); color: #fff; }
+    .btn-primary:hover { background: #132a42; color: #fff; text-decoration: none; }
+    .btn-secondary { background: #fff; color: var(--ink); border-color: var(--line); }
+    .btn-secondary:hover { background: #f8fafc; color: var(--ink); text-decoration: none; }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .status {
+      margin: 18px 0 0; padding: 12px 14px; border-radius: 12px; font-size: 0.94rem; display: none;
+    }
+    .status.show { display: block; }
+    .status.warn { background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--warn); }
+    .status.ok { background: var(--ok-bg); border: 1px solid var(--ok-line); color: var(--ok); }
+    .status.info { background: var(--accent-soft); border: 1px solid #bfdbfe; color: #1e3a8a; }
+    .user-row {
+      display: none; align-items: center; justify-content: space-between; gap: 12px;
+      margin: 18px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfe;
+    }
+    .user-row.show { display: flex; }
+    .user-meta { font-size: 0.94rem; }
+    .user-meta strong { display: block; }
+    .user-meta span { color: var(--muted); }
+    .downloads { display: none; grid-template-columns: 1fr; gap: 12px; margin-top: 8px; }
+    .downloads.show { display: grid; }
+    @media (min-width: 560px) { .downloads { grid-template-columns: 1fr 1fr; } }
+    .dl-card {
+      border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: #fbfcfe;
+    }
+    .dl-card h2 { margin: 0 0 6px; font-size: 1rem; }
+    .dl-card p { margin: 0 0 12px; color: var(--muted); font-size: 0.9rem; }
+    .hint { margin-top: 18px; color: var(--muted); font-size: 0.9rem; }
+    footer { margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="/"><span class="mark">NEO</span><span>NEO</span></a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </header>
+
+    <main class="panel">
+      <h1>Download NEO</h1>
+      <p class="lede">
+        Sign in with your company Google account. Only verified emails on
+        cartelpr.com, sharks.agency, gray.com.pk, jbnjaws.com, or jahanz.com
+        can download the latest Mac and Windows builds.
+      </p>
+
+      <button class="btn btn-primary" id="sign-in" type="button">Continue with Google</button>
+      <button class="btn btn-secondary" id="sign-out" type="button" style="display:none; margin-left:8px;">Sign out</button>
+
+      <div class="user-row" id="user-row">
+        <div class="user-meta">
+          <strong id="user-name">Signed in</strong>
+          <span id="user-email"></span>
+        </div>
+      </div>
+
+      <div class="status info" id="status"></div>
+
+      <div class="downloads" id="downloads">
+        <section class="dl-card">
+          <h2>Mac (universal)</h2>
+          <p>Works on Apple silicon and Intel Macs.</p>
+          <button class="btn btn-primary" id="dl-mac" type="button">Download for Mac</button>
+        </section>
+        <section class="dl-card">
+          <h2>Windows</h2>
+          <p>64-bit installer for Windows PCs.</p>
+          <button class="btn btn-primary" id="dl-win" type="button">Download for Windows</button>
+        </section>
+      </div>
+
+      <p class="hint">
+        Builds are served as short-lived signed links. If a download fails, sign in again and retry.
+      </p>
+    </main>
+
+    <footer>
+      <p><a href="/">← Back to NEO</a> · <a href="mailto:neo@jahanz.com">neo@jahanz.com</a></p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+  <script src="/site-config.js"></script>
+  <script>
+    (function () {
+      const cfg = window.NEO_SITE;
+      const statusEl = document.getElementById("status");
+      const signInBtn = document.getElementById("sign-in");
+      const signOutBtn = document.getElementById("sign-out");
+      const userRow = document.getElementById("user-row");
+      const downloads = document.getElementById("downloads");
+      const userName = document.getElementById("user-name");
+      const userEmail = document.getElementById("user-email");
+      let supabase = null;
+      let session = null;
+
+      function showStatus(kind, text) {
+        statusEl.className = "status show " + kind;
+        statusEl.textContent = text;
+      }
+
+      function domainAllowed(email) {
+        const at = (email || "").toLowerCase().split("@")[1] || "";
+        return (cfg.allowedDomains || []).includes(at);
+      }
+
+      function render() {
+        if (!session) {
+          signInBtn.style.display = "";
+          signOutBtn.style.display = "none";
+          userRow.classList.remove("show");
+          downloads.classList.remove("show");
+          return;
+        }
+        const email = session.user.email || "";
+        const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || "Signed in";
+        signInBtn.style.display = "none";
+        signOutBtn.style.display = "inline-flex";
+        userRow.classList.add("show");
+        userName.textContent = name;
+        userEmail.textContent = email;
+        if (!domainAllowed(email)) {
+          downloads.classList.remove("show");
+          showStatus("warn", "Company accounts only. Use a verified cartelpr.com, sharks.agency, gray.com.pk, jbnjaws.com, or jahanz.com Google account.");
+          return;
+        }
+        downloads.classList.add("show");
+        showStatus("ok", "Verified company account. Choose a platform below.");
+      }
+
+      async function ensureClient() {
+        if (!cfg || !window.supabase) {
+          showStatus("warn", "Download sign-in is not configured yet.");
+          return null;
+        }
+        if (!supabase) {
+          supabase = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey, {
+            auth: {
+              flowType: "pkce",
+              detectSessionInUrl: true,
+              persistSession: true,
+              autoRefreshToken: true,
+            },
+          });
+        }
+        return supabase;
+      }
+
+      async function init() {
+        const client = await ensureClient();
+        if (!client) return;
+        const url = new URL(window.location.href);
+        if (url.searchParams.get("code")) {
+          showStatus("info", "Finishing Google sign-in…");
+          const { data, error } = await client.auth.exchangeCodeForSession(url.searchParams.get("code"));
+          url.searchParams.delete("code");
+          window.history.replaceState({}, "", url.pathname + url.search + url.hash);
+          if (error) {
+            showStatus("warn", error.message || "Google sign-in failed.");
+          } else {
+            session = data.session;
+          }
+        } else {
+          const { data } = await client.auth.getSession();
+          session = data.session;
+        }
+        render();
+        client.auth.onAuthStateChange((_event, next) => {
+          session = next;
+          render();
+        });
+      }
+
+      signInBtn.addEventListener("click", async () => {
+        const client = await ensureClient();
+        if (!client) return;
+        showStatus("info", "Redirecting to Google…");
+        const redirectTo = new URL("/download.html", window.location.origin).toString();
+        const { error } = await client.auth.signInWithOAuth({
+          provider: "google",
+          options: {
+            redirectTo,
+            queryParams: { prompt: "select_account" },
+          },
+        });
+        if (error) showStatus("warn", error.message);
+      });
+
+      signOutBtn.addEventListener("click", async () => {
+        const client = await ensureClient();
+        if (!client) return;
+        await client.auth.signOut();
+        session = null;
+        statusEl.className = "status";
+        statusEl.textContent = "";
+        render();
+      });
+
+      async function download(platform) {
+        if (!session) return;
+        showStatus("info", "Preparing a secure download link…");
+        try {
+          const res = await fetch(cfg.downloadFunction, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + session.access_token,
+              apikey: cfg.supabaseAnonKey,
+            },
+            body: JSON.stringify({ platform }),
+          });
+          const payload = await res.json().catch(() => ({}));
+          if (!res.ok || !payload.ok || !payload.url) {
+            const msg = payload.error || "Could not create a download link.";
+            showStatus(msg.toLowerCase().includes("company") ? "warn" : "warn", msg);
+            return;
+          }
+          showStatus("ok", "Starting download…");
+          window.location.href = payload.url;
+        } catch (err) {
+          showStatus("warn", "Network error while creating the download link.");
+        }
+      }
+
+      document.getElementById("dl-mac").addEventListener("click", () => download("mac"));
+      document.getElementById("dl-win").addEventListener("click", () => download("windows"));
+      init();
+    })();
+  </script>
+</body>
+</html>
