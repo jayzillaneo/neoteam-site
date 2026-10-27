@@ -5,78 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Download NEO</title>
   <meta name="description" content="Download the latest NEO Mac and Windows builds with a verified company Google account." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B1F33'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='14' fill='%23F4F7FB'%3EN%3C/text%3E%3C/svg%3E" />
-  <style>
-    :root {
-      --ink: #0b1f33; --muted: #5a6b7d; --line: #d9e2ec; --bg: #f4f7fb;
-      --card: #ffffff; --accent: #1f6feb; --accent-soft: #e8f0fe;
-      --warn: #9a3412; --warn-bg: #fff7ed; --warn-line: #fed7aa;
-      --ok: #065f46; --ok-bg: #ecfdf5; --ok-line: #a7f3d0;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-      color: var(--ink); background: linear-gradient(180deg, #eef3f9 0%, var(--bg) 45%, #fff 100%);
-      min-height: 100vh; line-height: 1.55;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 40px 24px 72px; }
-    header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.08em; color: inherit; text-decoration: none; }
-    .mark {
-      width: 38px; height: 38px; border-radius: 10px; background: var(--ink); color: #fff;
-      display: grid; place-items: center; font-size: 0.85rem;
-    }
-    nav a { color: var(--muted); margin-left: 16px; }
-    .panel {
-      background: var(--card); border: 1px solid var(--line); border-radius: 20px;
-      padding: 32px 28px; box-shadow: 0 14px 32px rgba(11, 31, 51, 0.05);
-    }
-    h1 { margin: 0 0 8px; font-size: clamp(1.7rem, 3.5vw, 2.1rem); letter-spacing: -0.02em; }
-    .lede { margin: 0 0 22px; color: var(--muted); }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      border-radius: 12px; padding: 12px 16px; font-weight: 700; border: 1px solid transparent;
-      cursor: pointer; text-decoration: none; font-size: 0.96rem;
-    }
-    .btn-primary { background: var(--ink); color: #fff; }
-    .btn-primary:hover { background: #132a42; color: #fff; text-decoration: none; }
-    .btn-secondary { background: #fff; color: var(--ink); border-color: var(--line); }
-    .btn-secondary:hover { background: #f8fafc; color: var(--ink); text-decoration: none; }
-    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
-    .status {
-      margin: 18px 0 0; padding: 12px 14px; border-radius: 12px; font-size: 0.94rem; display: none;
-    }
-    .status.show { display: block; }
-    .status.warn { background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--warn); }
-    .status.ok { background: var(--ok-bg); border: 1px solid var(--ok-line); color: var(--ok); }
-    .status.info { background: var(--accent-soft); border: 1px solid #bfdbfe; color: #1e3a8a; }
-    .user-row {
-      display: none; align-items: center; justify-content: space-between; gap: 12px;
-      margin: 18px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfe;
-    }
-    .user-row.show { display: flex; }
-    .user-meta { font-size: 0.94rem; }
-    .user-meta strong { display: block; }
-    .user-meta span { color: var(--muted); }
-    .downloads { display: none; grid-template-columns: 1fr; gap: 12px; margin-top: 8px; }
-    .downloads.show { display: grid; }
-    @media (min-width: 560px) { .downloads { grid-template-columns: 1fr 1fr; } }
-    .dl-card {
-      border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: #fbfcfe;
-    }
-    .dl-card h2 { margin: 0 0 6px; font-size: 1rem; }
-    .dl-card p { margin: 0 0 12px; color: var(--muted); font-size: 0.9rem; }
-    .hint { margin-top: 18px; color: var(--muted); font-size: 0.9rem; }
-    footer { margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
-  </style>
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/png" href="/brand/favicon.png" />
+  <link rel="apple-touch-icon" href="/brand/neo-mark.png" />
+  <link rel="stylesheet" href="/neo-theme.css" />
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <a class="brand" href="/"><span class="mark">NEO</span><span>NEO</span></a>
-      <nav>
+  <div class="wrap wrap-narrow">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/brand/neo-mark.png" width="42" height="42" alt="NEO" />
+        <span>NEO</span>
+      </a>
+      <nav class="site-nav">
         <a href="/">Home</a>
         <a href="/privacy.html">Privacy</a>
       </nav>
@@ -120,12 +61,12 @@
       </p>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <p><a href="/">← Back to NEO</a> · <a href="mailto:neo@jahanz.com">neo@jahanz.com</a></p>
     </footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
   <script src="/site-config.js"></script>
   <script>
     (function () {

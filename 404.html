@@ -5,115 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NEO — Team app</title>
   <meta name="description" content="NEO is the internal employee app for check-in, hours, tasks, and calendar for Cartel PR and sister companies." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B1F33'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='14' fill='%23F4F7FB'%3EN%3C/text%3E%3C/svg%3E" />
-  <style>
-    :root {
-      --ink: #0b1f33;
-      --muted: #5a6b7d;
-      --line: #d9e2ec;
-      --bg: #f4f7fb;
-      --card: #ffffff;
-      --accent: #1f6feb;
-      --accent-soft: #e8f0fe;
-      --good: #0f766e;
-      --good-soft: #ccfbf1;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(1200px 480px at 10% -10%, #dbeafe 0%, transparent 55%),
-        radial-gradient(900px 420px at 100% 0%, #e0e7ff 0%, transparent 50%),
-        linear-gradient(180deg, #eef3f9 0%, var(--bg) 40%, #fff 100%);
-      min-height: 100vh;
-      line-height: 1.55;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: 880px; margin: 0 auto; padding: 40px 24px 72px; }
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; margin-bottom: 36px;
-    }
-    .brand {
-      display: flex; align-items: center; gap: 12px;
-      font-weight: 700; letter-spacing: 0.08em; font-size: 1.15rem;
-      color: inherit; text-decoration: none;
-    }
-    .mark {
-      width: 42px; height: 42px; border-radius: 11px; background: var(--ink); color: #fff;
-      display: grid; place-items: center; font-size: 0.9rem; letter-spacing: 0.04em;
-      box-shadow: 0 8px 18px rgba(11, 31, 51, 0.18);
-    }
-    nav a { color: var(--muted); font-size: 0.95rem; margin-left: 18px; }
-    .hero {
-      background: var(--card); border: 1px solid var(--line); border-radius: 22px;
-      padding: 40px 36px; box-shadow: 0 18px 40px rgba(11, 31, 51, 0.06);
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      color: #1849a9; background: var(--accent-soft); border-radius: 999px;
-      padding: 6px 12px; margin: 0 0 16px;
-    }
-    h1 {
-      margin: 0 0 12px; font-size: clamp(1.9rem, 4.2vw, 2.55rem);
-      letter-spacing: -0.025em; line-height: 1.12;
-    }
-    .lede { margin: 0 0 28px; color: var(--muted); font-size: 1.08rem; max-width: 38em; }
-    .actions {
-      display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 28px;
-    }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      border-radius: 12px; padding: 13px 18px; font-weight: 700; font-size: 0.98rem;
-      border: 1px solid transparent; cursor: pointer; text-decoration: none;
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-    }
-    .btn:hover { text-decoration: none; transform: translateY(-1px); }
-    .btn-primary {
-      background: var(--ink); color: #fff;
-      box-shadow: 0 10px 22px rgba(11, 31, 51, 0.18);
-    }
-    .btn-primary:hover { background: #132a42; color: #fff; }
-    .btn-secondary {
-      background: #fff; color: var(--ink); border-color: var(--line);
-    }
-    .btn-secondary:hover { background: #f8fafc; color: var(--ink); }
-    .chips {
-      display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 8px; padding: 0; list-style: none;
-    }
-    .chips li {
-      background: var(--accent-soft); color: #1849a9; border-radius: 999px;
-      padding: 8px 14px; font-size: 0.9rem; font-weight: 600;
-    }
-    .card-grid {
-      display: grid; gap: 14px; margin-top: 28px;
-    }
-    @media (min-width: 700px) {
-      .card-grid { grid-template-columns: 1fr 1fr; }
-    }
-    .card {
-      border: 1px solid var(--line); border-radius: 16px; padding: 20px 18px 18px;
-      background: #fbfcfe;
-    }
-    .card h2 { margin: 0 0 6px; font-size: 1.05rem; }
-    .card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
-    .note {
-      margin-top: 18px; padding: 14px 16px; border-radius: 12px;
-      background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; font-size: 0.92rem;
-    }
-    footer { margin-top: 36px; color: var(--muted); font-size: 0.9rem; }
-    footer p { margin: 0 0 8px; }
-  </style>
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/png" href="/brand/favicon.png" />
+  <link rel="apple-touch-icon" href="/brand/neo-mark.png" />
+  <link rel="stylesheet" href="/neo-theme.css" />
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <a class="brand" href="/"><span class="mark">NEO</span><span>NEO</span></a>
-      <nav>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/brand/neo-mark.png" width="42" height="42" alt="NEO" />
+        <span>NEO</span>
+      </a>
+      <nav class="site-nav">
         <a href="/download.html">Download</a>
         <a href="/app/">Web app</a>
         <a href="/privacy.html">Privacy</a>
@@ -122,6 +26,9 @@
     </header>
 
     <main class="hero">
+      <div class="hero-center" style="margin-bottom: 28px;">
+        <img class="brand-mark brand-mark-lg" src="/brand/neo-mark.png" width="72" height="72" alt="NEO by jayzilla" />
+      </div>
       <p class="eyebrow">Internal employee app</p>
       <h1>Check-in, hours, tasks, and calendar — in one place.</h1>
       <p class="lede">
@@ -165,7 +72,7 @@
       </p>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <p>Operated by Cartel PR · 45/B3 Gulberg III, Lahore 54660, Punjab, Pakistan</p>
       <p><a href="mailto:neo@jahanz.com">neo@jahanz.com</a> · <a href="/privacy.html">Privacy Policy</a></p>
     </footer>
