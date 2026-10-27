@@ -4,5 +4,5 @@ window.NEO_SITE = {
   supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRlcHNtbGxqZ2J4Z2Rob2RnZnBjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwMTYyNDIsImV4cCI6MjEwODU5MjI0Mn0.7mdD1G5tOlz3JJd_IeyOaBGajVvGV831M5Q3oG_LL0M',
   downloadFunction: "https://tepsmlljgbxgdhodgfpc.supabase.co/functions/v1/download-build",
   allowedDomains: ["cartelpr.com", "sharks.agency", "gray.com.pk", "jbnjaws.com", "jahanz.com"],
-  appWebUrl: null, // no permanent web deployment yet
+  appWebUrl: "https://app.neoteam.app/",
 };

@@ -26,7 +26,7 @@ Default Pages URL: https://jayzillaneo.github.io/neoteam-site/
 Allowed domains: cartelpr.com, sharks.agency, gray.com.pk, jbnjaws.com, jahanz.com
 
 ## Web app
-`jayzillaneo/neo-app` has a static export target (`npm run build:desktop` → `out/`) and an old temporary Cloudflare tunnel URL in README. No permanent public web deployment exists yet. `/app/` on this site is a placeholder until one is hosted (ideally `app.neoteam.app` or `/app`).
+`jayzillaneo/neo-app` has a static export target (`npm run build:desktop` → `out/`) and an old temporary Cloudflare tunnel URL in README. Web app is hosted on GitHub Pages at https://app.neoteam.app (repo `jayzillaneo/neoteam-webapp`). Site CTAs link there; `/app/` redirects.
 
 ## DNS to set at Porkbun (neoteam.app)
 Do this in the Porkbun DNS panel. Keep Porkbun nameservers. Do not change nameservers.
@@ -71,3 +71,11 @@ Google Cloud project `neo-app-512813` OAuth client / consent screen still needs 
 3. Google Cloud project `neo-app-512813` consent screen branding:
    - Application home page: `https://neoteam.app`
    - Privacy policy: `https://neoteam.app/privacy.html`
+
+
+## App subdomain DNS (Porkbun)
+| Type  | Host | Answer                | TTL |
+|-------|------|-----------------------|-----|
+| CNAME | app  | jayzillaneo.github.io | 600 |
+
+Remove any conflicting parking/wildcard record for `app`.
