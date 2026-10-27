@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEO — Team app</title>
+  <meta name="description" content="NEO is the internal employee app for check-in, hours, tasks, and calendar for Cartel PR and sister companies." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B1F33'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='14' fill='%23F4F7FB'%3EN%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --ink: #0b1f33;
+      --muted: #5a6b7d;
+      --line: #d9e2ec;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --accent: #1f6feb;
+      --accent-soft: #e8f0fe;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef3f9 0%, var(--bg) 40%, #fff 100%);
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 1.15rem;
+    }
+    .mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--ink);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+    }
+    nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-left: 18px;
+    }
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 40px 36px;
+      box-shadow: 0 18px 40px rgba(11, 31, 51, 0.06);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .lede {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 36em;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
+    }
+    .chips li {
+      background: var(--accent-soft);
+      color: #1849a9;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .card-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    @media (min-width: 640px) {
+      .card-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 18px 16px;
+      background: #fbfcfe;
+    }
+    .card h2 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer p { margin: 0 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><span class="mark">NEO</span><span>NEO</span></div>
+      <nav>
+        <a href="/privacy.html">Privacy</a>
+        <a href="mailto:neo@jahanz.com">Contact</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <h1>The team app for check-in, hours, tasks, and calendar.</h1>
+      <p class="lede">
+        NEO is the internal employee app used by Cartel PR, Sharks Agency, Gray, and JBnJaws.
+        Team members sign in with Google to track attendance, manage tasks, and keep their calendar in sync.
+      </p>
+      <ul class="chips">
+        <li>Check-in &amp; hours</li>
+        <li>Tasks</li>
+        <li>Google Calendar</li>
+        <li>Team directory</li>
+      </ul>
+      <div class="card-grid">
+        <section class="card">
+          <h2>Who it is for</h2>
+          <p>Invited employees of Cartel PR and sister companies. Access is by invite only.</p>
+        </section>
+        <section class="card">
+          <h2>How you sign in</h2>
+          <p>Google sign-in is the only sign-in method. There are no passwords stored in NEO.</p>
+        </section>
+        <section class="card">
+          <h2>What it does</h2>
+          <p>Check in and out, log hours, work through tasks, and view or create calendar events with teammates.</p>
+        </section>
+        <section class="card">
+          <h2>Privacy</h2>
+          <p>Read how NEO uses Google, location, and calendar data on the <a href="/privacy.html">Privacy Policy</a>.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>Operated by Cartel PR · 45/B3 Gulberg III, Lahore 54660, Punjab, Pakistan</p>
+      <p><a href="mailto:neo@jahanz.com">neo@jahanz.com</a> · <a href="/privacy.html">Privacy Policy</a></p>
+    </footer>
+  </div>
+</body>
+</html>
