@@ -10,6 +10,7 @@ const ALLOWED_DOMAINS = [
   "gray.com.pk",
   "jbnjaws.com",
   "jahanz.com",
+  "litmgt.com",
 ];
 
 const PLATFORM_PATHS: Record<string, string> = {

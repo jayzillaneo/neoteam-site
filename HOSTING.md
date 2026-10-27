@@ -26,7 +26,7 @@ Default Pages URL: https://jayzillaneo.github.io/neoteam-site/
   - `latest/manifest.json`
 - Edge Function: `download-build` (checks company email domain server-side, returns 120s signed URL)
 
-Allowed domains: cartelpr.com, sharks.agency, gray.com.pk, jbnjaws.com, jahanz.com
+Allowed domains: cartelpr.com, sharks.agency, gray.com.pk, jbnjaws.com, jahanz.com, litmgt.com
 
 ## Web app
 `jayzillaneo/neo-app` has a static export target (`npm run build:desktop` → `out/`) and an old temporary Cloudflare tunnel URL in README. Web app is hosted on GitHub Pages at https://app.neoteam.app (repo `jayzillaneo/neoteam-webapp`). Site CTAs link there; `/app/` redirects.
