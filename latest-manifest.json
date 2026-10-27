@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "build": "8.2",
+  "build": "8.5",
   "updated": "2026-10-27",
   "mac": "latest/mac/NEO_universal.dmg",
   "windows": "latest/windows/NEO_x64-setup.exe",

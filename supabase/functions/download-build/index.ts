@@ -22,7 +22,7 @@ const PLATFORM_PATHS: Record<string, string> = {
 
 const BUCKET = "neo-builds";
 const SIGNED_TTL_SECONDS = 120;
-const BUILD_LABEL = "8.2";
+const BUILD_LABEL = "8.5";
 const VERSION = "0.1.0";
 
 function json(body: unknown, status = 200): Response {
@@ -43,7 +43,7 @@ Deno.serve(async (request) => {
 
   const supabaseUrl = (Deno.env.get("SUPABASE_URL") ?? "").replace(/\/$/, "");
   const anon = Deno.env.get("SUPABASE_ANON_KEY") ?? Deno.env.get("SUPABASE_PUBLISHABLE_KEY") ?? "";
-  const service = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+  const service = Deno.env.get("NEO_SERVICE_ROLE_KEY") ?? Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
   const auth = request.headers.get("Authorization") ?? "";
 
   if (!supabaseUrl || !anon || !service || !auth.toLowerCase().startsWith("bearer ")) {

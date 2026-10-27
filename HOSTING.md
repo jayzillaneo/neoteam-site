@@ -18,7 +18,7 @@ Default Pages URL: https://jayzillaneo.github.io/neoteam-site/
 
 ## Downloads
 - Private Supabase Storage bucket: `neo-builds`
-- Objects (build 8.2):
+- Objects (always the current latest; presently build 8.5):
   - `latest/mac/NEO_universal.dmg`
   - `latest/windows/NEO_x64-setup.exe`
   - `latest/windows/NEO_x64_en-US.msi`

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Download NEO</title>
-  <meta name="description" content="Download NEO build 8.2 for Mac, Windows, and Android with a verified company Google account." />
+  <meta name="description" content="Download the latest NEO build for Mac, Windows, and Android with a verified company Google account." />
   <meta name="theme-color" content="#000000" />
   <link rel="icon" type="image/png" href="/brand/favicon.png" />
   <link rel="apple-touch-icon" href="/brand/neo-mark.png" />
@@ -25,10 +25,10 @@
 
     <main class="panel">
       <h1>Download NEO</h1>
-      <p class="lede">
+      <p class="lede" id="lede">
         Sign in with your company Google account. Only verified emails on
         cartelpr.com, sharks.agency, gray.com.pk, jbnjaws.com, jahanz.com, or litmgt.com
-        can download the latest NEO build 8.2 for Mac, Windows, and Android.
+        can download the latest NEO build for Mac, Windows, and Android.
       </p>
 
       <button class="btn btn-primary" id="sign-in" type="button">Continue with Google</button>
@@ -43,28 +43,29 @@
 
       <div class="status info" id="status"></div>
 
-      <p class="hint" id="build-label" style="margin-top:0;">Latest: <strong>build 8.2</strong> (v0.1.0)</p>
+      <p class="hint" id="build-label" style="margin-top:0;">Latest: <strong id="build-num">…</strong> <span id="build-ver"></span></p>
 
       <div class="downloads" id="downloads">
         <section class="dl-card">
           <h2>Mac (universal)</h2>
-          <p>Works on Apple silicon and Intel Macs. Build 8.2.</p>
+          <p id="mac-desc">Works on Apple silicon and Intel Macs.</p>
           <button class="btn btn-primary" id="dl-mac" type="button">Download for Mac</button>
         </section>
         <section class="dl-card">
           <h2>Windows</h2>
-          <p>64-bit installer for Windows PCs. Build 8.2.</p>
+          <p id="win-desc">64-bit installer for Windows PCs.</p>
           <button class="btn btn-primary" id="dl-win" type="button">Download for Windows</button>
         </section>
         <section class="dl-card">
           <h2>Android</h2>
-          <p>Debug APK for Android devices. Build 8.2.</p>
+          <p id="android-desc">Debug APK for Android devices.</p>
           <button class="btn btn-primary" id="dl-android" type="button">Download for Android</button>
         </section>
       </div>
 
       <p class="hint">
-        Builds are served as short-lived signed links. If a download fails, sign in again and retry.
+        Builds are served as short-lived signed links from the current latest release.
+        If a download fails, sign in again and retry.
       </p>
     </main>
 
@@ -87,6 +88,7 @@
       const userEmail = document.getElementById("user-email");
       let supabase = null;
       let session = null;
+      let latestBuild = null;
 
       function showStatus(kind, text) {
         statusEl.className = "status show " + kind;
@@ -96,6 +98,42 @@
       function domainAllowed(email) {
         const at = (email || "").toLowerCase().split("@")[1] || "";
         return (cfg.allowedDomains || []).includes(at);
+      }
+
+      function applyManifest(m) {
+        if (!m || !m.build) return;
+        latestBuild = m;
+        const build = String(m.build);
+        const version = m.version ? "v" + m.version : "";
+        document.getElementById("build-num").textContent = "build " + build;
+        document.getElementById("build-ver").textContent = version ? "(" + version + ")" : "";
+        document.getElementById("lede").innerHTML =
+          "Sign in with your company Google account. Only verified emails on " +
+          "cartelpr.com, sharks.agency, gray.com.pk, jbnjaws.com, jahanz.com, or litmgt.com " +
+          "can download the latest NEO build <strong>" + build + "</strong> for Mac, Windows, and Android.";
+        document.getElementById("mac-desc").textContent =
+          "Works on Apple silicon and Intel Macs. Build " + build + ".";
+        document.getElementById("win-desc").textContent =
+          "64-bit installer for Windows PCs. Build " + build + ".";
+        document.getElementById("android-desc").textContent =
+          "Debug APK for Android devices. Build " + build + ".";
+        const meta = document.querySelector('meta[name="description"]');
+        if (meta) {
+          meta.setAttribute(
+            "content",
+            "Download NEO build " + build + " for Mac, Windows, and Android with a verified company Google account."
+          );
+        }
+      }
+
+      async function loadManifest() {
+        try {
+          const res = await fetch("/latest-manifest.json", { cache: "no-store" });
+          if (!res.ok) throw new Error("manifest " + res.status);
+          applyManifest(await res.json());
+        } catch (_err) {
+          document.getElementById("build-num").textContent = "latest";
+        }
       }
 
       function render() {
@@ -119,7 +157,8 @@
           return;
         }
         downloads.classList.add("show");
-        showStatus("ok", "Verified company account. Choose a platform below.");
+        const buildHint = latestBuild && latestBuild.build ? " (build " + latestBuild.build + ")" : "";
+        showStatus("ok", "Verified company account. Choose a platform below" + buildHint + ".");
       }
 
       async function ensureClient() {
@@ -141,6 +180,7 @@
       }
 
       async function init() {
+        await loadManifest();
         const client = await ensureClient();
         if (!client) return;
         const url = new URL(window.location.href);
@@ -206,10 +246,11 @@
           const payload = await res.json().catch(() => ({}));
           if (!res.ok || !payload.ok || !payload.url) {
             const msg = payload.error || "Could not create a download link.";
-            showStatus(msg.toLowerCase().includes("company") ? "warn" : "warn", msg);
+            showStatus("warn", msg);
             return;
           }
-          showStatus("ok", "Starting download…");
+          const buildNote = payload.build ? " (build " + payload.build + ")" : "";
+          showStatus("ok", "Starting download" + buildNote + "…");
           window.location.href = payload.url;
         } catch (err) {
           showStatus("warn", "Network error while creating the download link.");
