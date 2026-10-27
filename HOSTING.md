@@ -18,9 +18,12 @@ Default Pages URL: https://jayzillaneo.github.io/neoteam-site/
 
 ## Downloads
 - Private Supabase Storage bucket: `neo-builds`
-- Objects:
+- Objects (build 8.2):
   - `latest/mac/NEO_universal.dmg`
   - `latest/windows/NEO_x64-setup.exe`
+  - `latest/windows/NEO_x64_en-US.msi`
+  - `latest/android/NEO_debug.apk`
+  - `latest/manifest.json`
 - Edge Function: `download-build` (checks company email domain server-side, returns 120s signed URL)
 
 Allowed domains: cartelpr.com, sharks.agency, gray.com.pk, jbnjaws.com, jahanz.com

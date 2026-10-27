@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Download NEO</title>
-  <meta name="description" content="Download the latest NEO Mac and Windows builds with a verified company Google account." />
+  <meta name="description" content="Download NEO build 8.2 for Mac, Windows, and Android with a verified company Google account." />
   <meta name="theme-color" content="#000000" />
   <link rel="icon" type="image/png" href="/brand/favicon.png" />
   <link rel="apple-touch-icon" href="/brand/neo-mark.png" />
@@ -28,7 +28,7 @@
       <p class="lede">
         Sign in with your company Google account. Only verified emails on
         cartelpr.com, sharks.agency, gray.com.pk, jbnjaws.com, or jahanz.com
-        can download the latest Mac and Windows builds.
+        can download the latest NEO build 8.2 for Mac, Windows, and Android.
       </p>
 
       <button class="btn btn-primary" id="sign-in" type="button">Continue with Google</button>
@@ -43,16 +43,23 @@
 
       <div class="status info" id="status"></div>
 
+      <p class="hint" id="build-label" style="margin-top:0;">Latest: <strong>build 8.2</strong> (v0.1.0)</p>
+
       <div class="downloads" id="downloads">
         <section class="dl-card">
           <h2>Mac (universal)</h2>
-          <p>Works on Apple silicon and Intel Macs.</p>
+          <p>Works on Apple silicon and Intel Macs. Build 8.2.</p>
           <button class="btn btn-primary" id="dl-mac" type="button">Download for Mac</button>
         </section>
         <section class="dl-card">
           <h2>Windows</h2>
-          <p>64-bit installer for Windows PCs.</p>
+          <p>64-bit installer for Windows PCs. Build 8.2.</p>
           <button class="btn btn-primary" id="dl-win" type="button">Download for Windows</button>
+        </section>
+        <section class="dl-card">
+          <h2>Android</h2>
+          <p>Debug APK for Android devices. Build 8.2.</p>
+          <button class="btn btn-primary" id="dl-android" type="button">Download for Android</button>
         </section>
       </div>
 
@@ -211,6 +218,7 @@
 
       document.getElementById("dl-mac").addEventListener("click", () => download("mac"));
       document.getElementById("dl-win").addEventListener("click", () => download("windows"));
+      document.getElementById("dl-android").addEventListener("click", () => download("android"));
       init();
     })();
   </script>

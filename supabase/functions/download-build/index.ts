@@ -15,10 +15,14 @@ const ALLOWED_DOMAINS = [
 const PLATFORM_PATHS: Record<string, string> = {
   mac: "latest/mac/NEO_universal.dmg",
   windows: "latest/windows/NEO_x64-setup.exe",
+  windowsMsi: "latest/windows/NEO_x64_en-US.msi",
+  android: "latest/android/NEO_debug.apk",
 };
 
 const BUCKET = "neo-builds";
 const SIGNED_TTL_SECONDS = 120;
+const BUILD_LABEL = "8.2";
+const VERSION = "0.1.0";
 
 function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
@@ -76,7 +80,7 @@ Deno.serve(async (request) => {
   const platform = (body.platform ?? "").toLowerCase();
   const objectPath = PLATFORM_PATHS[platform];
   if (!objectPath) {
-    return json({ ok: false, error: "Choose mac or windows." }, 400);
+    return json({ ok: false, error: "Choose mac, windows, windowsMsi, or android." }, 400);
   }
 
   const signUrl = `${supabaseUrl}/storage/v1/object/sign/${BUCKET}/${objectPath}`;
@@ -107,5 +111,7 @@ Deno.serve(async (request) => {
     url,
     expiresIn: SIGNED_TTL_SECONDS,
     file: objectPath.split("/").pop(),
+    build: BUILD_LABEL,
+    version: VERSION,
   });
 });
