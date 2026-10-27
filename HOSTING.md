@@ -54,13 +54,16 @@ Optional IPv6 AAAA, Host `@`:
 
 Remove any Porkbun parking / default A or ALIAS records that conflict.
 
-## Supabase Auth redirect URLs to add
-Project `tepsmlljgbxgdhodgfpc`:
+## Supabase Auth redirect URLs
+Project `tepsmlljgbxgdhodgfpc` — already added to `uri_allow_list` on 27 Oct 2026:
 - `https://neoteam.app/download.html`
-- `https://jayzillaneo.github.io/neoteam-site/download.html` (fallback before DNS)
-- Site URL can stay as the app deep link; add the above under Additional Redirect URLs.
+- `https://neoteam.app/**`
+- `https://jayzillaneo.github.io/neoteam-site/download.html`
+- `https://jayzillaneo.github.io/neoteam-site/**`
 
-Google Cloud OAuth client for the same project should also allow those origins/redirects if the consent screen requires them.
+Also still present: localhost, tauri, and `neo://auth-callback/**` for the desktop app.
+
+Google Cloud project `neo-app-512813` OAuth client / consent screen still needs the public home + privacy URLs once DNS is live.
 
 ## After DNS propagates
 1. Confirm https://neoteam.app/ , /privacy.html , /download.html load.
